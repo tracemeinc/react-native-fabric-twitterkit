@@ -14,7 +14,7 @@
 #import <React/RCTEventDispatcher.h>
 #import <React/RCTBridge.h>
 //#import <Crashlytics/Crashlytics.h>
-#import <TwitterKit/TwitterKit.h>
+#import <TwitterKit/TWTRKit.h>
 
 @implementation FabricTwitterKit
 @synthesize bridge = _bridge;
@@ -51,7 +51,7 @@ RCT_EXPORT_METHOD(fetchProfile:(RCTResponseSenderBlock)callback)
         NSError *clientError;
         NSURLRequest *request = [client
                                  URLRequestWithMethod:@"GET"
-                                 URL:showEndpoint
+                                 URLString:showEndpoint
                                  parameters:params
                                  error:&clientError];
 
@@ -109,7 +109,7 @@ RCT_EXPORT_METHOD(fetchTweet:(NSDictionary *)options :(RCTResponseSenderBlock)ca
         NSError *clientError;
         NSURLRequest *request = [client
                                  URLRequestWithMethod:@"GET"
-                                 URL:showEndpoint
+                                 URLString:showEndpoint
                                  parameters:params
                                  error:&clientError];
 
