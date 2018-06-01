@@ -149,6 +149,7 @@ RCT_EXPORT_METHOD(fetchTweet:(NSDictionary *)options :(RCTResponseSenderBlock)ca
 RCT_EXPORT_METHOD(composeTweet:(NSDictionary *)options :(RCTResponseSenderBlock)callback) {
 
     NSString *body = options[@"body"];
+    NSString *url = options[@"url"];
 
     TWTRComposer *composer = [[TWTRComposer alloc] init];
 
@@ -156,6 +157,10 @@ RCT_EXPORT_METHOD(composeTweet:(NSDictionary *)options :(RCTResponseSenderBlock)
         [composer setText:body];
     }
 
+    if (url) {
+        [composer setURL:[NSURL URLWithString:url]];
+    }
+    
     UIViewController *rootView = [UIApplication sharedApplication].keyWindow.rootViewController;
     [composer showFromViewController:rootView completion:^(TWTRComposerResult result) {
 
